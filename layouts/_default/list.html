@@ -1,4 +1,6 @@
-{{ define "title" }} {{ with .Title}} {{ .Title }} &ndash; {{end}}{{ .Site.Title }} {{ end }}
+
+{{ define "title" }} {{ with .Params.Title }} {{ .Params.Title }} &ndash; {{end}}{{ .Site.Title }} {{ end }}
+
 {{ define "main" }}
   <h1>{{ .Title }}</h1>
   {{ .Content }}
