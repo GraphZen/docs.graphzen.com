@@ -1,0 +1,23 @@
+{{ define "title" }} {{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+
+
+<div class="container-fluid">
+    <div class="row flex-xl-nowrap">
+        <div class="col-12 col-md-3 col-xl-2 py-md-3 gz-handbook-sidebar">
+            {{ partial "handbook-menu.html" . }}
+        </div>
+        <div class="d-none d-xl-block col-xl-2 gz-handbook-toc py-md-3">
+                {{ .TableOfContents }}
+        </div>
+        <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 gz-handbook-content border-left">
+            <h1>{{ .Title }}</h1>
+            {{ .Content }}
+
+            {{ partial "prev-next.html" .}}
+        </main>
+    </div>
+</div>
+
+{{ end }}

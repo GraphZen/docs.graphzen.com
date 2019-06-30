@@ -1,0 +1,11 @@
+{{ with .PrevInSection}} 
+<div class="gz-next">
+<a href="{{.RelPermalink}}" class="btn btn-primary">{{.Title}} &raquo;</a>
+</div>
+{{ end }}
+{{ with .NextInSection}} 
+<div class="gz-prev">
+
+<a href="{{.RelPermalink}}" class="btn ">&laquo; {{.Title}}</a>
+</div>
+{{ end }}

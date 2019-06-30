@@ -1,0 +1,112 @@
+/* using Sass */
+
+// $font-family-sans-serif: 'Karla', sans-serif;
+// $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+//   'Liberation Mono', 'Courier New', monospace !default;
+// $font-family-base: $font-family-sans-serif !default;
+
+// $body-bg: rgb(244, 244, 244);
+
+// $font-size-base: 1.25rem; // Assumes the browser default, typically `16px`
+// header {
+//   height: 100px;
+// }
+@import "prism";
+
+// .navbar-brand {
+//   font-weight: bold;
+//   font-size: 40px;
+// }
+
+html,
+body {
+  font-family: Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans,
+    Helvetica Neue, Arial, sans-serif; //font-family: source-han-sans-japanese, sans-serif;
+  font-style: normal;
+}
+
+$header-height: 6rem;
+
+header {
+  height: $header-height;
+  nav {
+    height: $header-height;
+  }
+  background-color: white;
+}
+
+.gz-handbook-sidebar {
+  top: $header-height;
+  position: sticky;
+  height: calc(100vh - #{$header-height});
+  overflow-y: auto;
+  .group-name {
+    font-weight: 500;
+  }
+  .list-group-item > ul {
+    list-style-type: none;
+    padding: 0;
+  }
+}
+
+.gz-handbook-content {
+  order: 1;
+  h1[id],
+  h2[id],
+  h3[id],
+  h4[id],
+  h5[id],
+  h6[id] {
+    margin-top: -$header-height;
+    padding-top: $header-height;
+  }
+}
+
+.gz-handbook-toc {
+  order: 2;
+  top: $header-height;
+  position: sticky;
+  height: calc(100vh - $header-height);
+  overflow-y: auto;
+  line-height: 1em;
+  li {
+    padding-top: 0.5em;
+  }
+  & > nav {
+    a {
+      font-size: 0.9rem;
+      color: #77757a;
+      &:hover {
+        color: inherit;
+      }
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 1em;
+    }
+    & > ul {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+.gz-logo {
+  font-weight: 700;
+}
+
+main p {
+  color: #1e2022;
+}
+
+
+.gz-next {
+  float: right;
+  text-align: right;
+
+}
+.gz-prev {
+  float: left;
+  text-align: left;
+
+}

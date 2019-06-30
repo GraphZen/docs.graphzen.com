@@ -1,0 +1,23 @@
+baseURL = "https://docs.graphzen.com/"
+languageCode = "en-us"
+title = "GraphZen Documentation"
+
+[menu]
+
+  [[menu.main]]
+    name = "Home"
+    url = "https://graphzen.com"
+    weight = -110
+
+  [[menu.main]]
+    identifier = "docs"
+    name = "Documentation"
+    url = "/"
+    weight = -100
+
+
+
+  [[menu.main]]
+    name = "API"
+    url = "https://api.graphzen.com"
+    weight = -90

@@ -1,0 +1,212 @@
+pre:not([class*="language-"]) code {
+  // prevent flash of unstyled code
+  display: none;
+}
+
+pre.language-graphql,
+pre.language-csharp,
+pre.language-json {
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #efefef;
+    color: #aaa;
+    // border-bottom-left-radius: 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 0.8em;
+    padding: 0.2em 0.4em;
+  }
+  &.language-csharp::after {
+    content: "C#";
+  }
+  &.language-graphql::after {
+    content: "GraphQL";
+  }
+
+  &.language-json::after {
+    content: "JSON";
+  }
+
+  display: block;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-left: 3px solid #ddd;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+
+  position: relative;
+
+  /* Comment */
+  .comment,
+  .cm-comment {
+    color: #999;
+  }
+
+  /* Punctuation */
+  .punctuation,
+  .cm-punctuation {
+    color: #555;
+  }
+
+  /* Keyword */
+  .keyword,
+  .cm-keyword {
+    color: #b11a04;
+  }
+
+  /* OperationName, FragmentName */
+  .constant,
+  .cm-def {
+    color: #d2054e;
+  }
+
+  /* FieldName */
+  .attr-name,
+  .cm-property {
+    color: #1f61a0;
+  }
+
+  /* FieldAlias */
+  .cm-qualifier {
+    color: #1c92a9;
+  }
+
+  /* ArgumentName and ObjectFieldName */
+  .cm-attribute {
+    color: #8b2bb9;
+  }
+
+  /* Number */
+  .number,
+  .cm-number {
+    color: #2882f9;
+  }
+
+  /* String */
+  .string,
+  .cm-string {
+    color: #d64292;
+  }
+
+  /* Boolean */
+  .boolean,
+  .cm-builtin {
+    color: #d47509;
+  }
+
+  /* EnumValue */
+  .enum,
+  .cm-string-2 {
+    color: #0b7fc7;
+  }
+
+  /* Variable */
+  .variable,
+  .cm-variable {
+    color: #397d13;
+  }
+
+  /* Directive */
+  .function,
+  .cm-meta {
+    color: #b33086;
+  }
+
+  /* Type */
+  .type-name,
+  .cm-atom {
+    color: #ca9800;
+  }
+
+  pre code.language-graphql {
+    background-color: black;
+  }
+}
+
+// Colors
+//  {
+//   .comment,
+//   .prolog,
+//   .doctype,
+//   .cdata {
+//     color: slategray;
+//   }
+
+//   .punctuation {
+//     color: #999;
+//   }
+
+//   .namespace {
+//     opacity: .7;
+//   }
+
+//   .property,
+//   .tag,
+//   .boolean,
+//   .number,
+//   .constant,
+//   .symbol,
+//   .deleted {
+//     color: #905;
+//   }
+
+//   .selector,
+//   .attr-name,
+//   .string,
+//   .char,
+//   .builtin,
+//   .inserted {
+//     color: #690;
+//   }
+
+//   .operator,
+//   .entity,
+//   .url,
+//   .language-css .string,
+//   .style .string {
+//     color: #a67f59;
+//     background: hsla(0, 0%, 100%, .5);
+//   }
+
+//   .atrule,
+//   .attr-value,
+//   .keyword {
+//     color: #07a;
+//   }
+
+//   .function {
+//     color: #DD4A68;
+//   }
+
+//   .regex,
+//   .important,
+//   .variable {
+//     color: #e90;
+//   }
+
+//   .important,
+//   .bold {
+//     font-weight: bold;
+//   }
+//   .italic {
+//     font-style: italic;
+//   }
+
+//   .entity {
+//     cursor: help;
+//   }
+// }

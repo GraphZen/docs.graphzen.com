@@ -1,0 +1,52 @@
+{{ define "title" }} {{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+
+{{ $section := .Section }}
+<div class="container-fluid">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 py-md-3 ">
+      {{ with .Parent }}
+      <div class="card mb-3">
+        <div class="card-body">
+
+        <h5 class="card-title mb-1">
+
+         <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h5>
+        <h6 class="card-subtitle mb-2 text-muted">Tutorial</h6>
+        <p class="card-text">{{.Summary }}</p>
+
+          <a href="/tutorials" class="card-link">View All Tutorials &raquo;</a>
+        </div>
+      </div>
+      {{ end }}
+      <div class="list-group list-group-flush">
+          {{ $curPage := .File.UniqueID }}
+          {{ range $i, $pages := .CurrentSection.Pages }}
+          <a href="{{ .Permalink }}" class="list-group-item list-group-item-action {{ if eq $curPage .File.UniqueID }}active{{ end }}" >{{ .Title }} </a>
+          {{ end }}
+      </div>
+    </div>
+    <div class="d-none d-xl-block col-xl-2 gz-handbook-toc py-md-3">
+      {{ .TableOfContents }}
+    </div>
+    <main
+      class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 gz-handbook-content "
+    >
+    
+          
+      <h1>{{ .Title }}</h1>
+      {{ .Content }}
+
+
+      <div>
+
+{{ partial "prev-next.html" .}}
+      </div>
+    </main>
+  </div>
+</div>
+
+{{ end }}
+

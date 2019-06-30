@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+      {{ block "title" . }}
+      {{ .Site.Title }}
+      {{ end }}
+    </title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- CSS Front Template -->
+    <link
+      rel="stylesheet"
+      href="https://graphzen-assets.netlify.com/css/theme.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css"
+      integrity="sha256-N1K43s+8twRa+tzzoF3V8EgssdDiZ6kd9r8Rfgg8kZU="
+      crossorigin="anonymous"
+    />
+
+    {{ $style := resources.Get "sass/main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+
+    <link rel="stylesheet" href="{{ $style.Permalink }}" />
+  </head>
+
+  <body>
+    <header class="sticky-top border-bottom px-md-3 ">
+    <nav class="navbar navbar-expand-lg navbar-light   ">
+      <a class="navbar-brand gz-logo" href="https://graphzen.com">
+        GraphZen
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- sidebar start -->
+    <ul class="navbar-nav mr-auto">
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+            {{ if .HasChildren }}
+                <li class="nav-item dropdown {{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a href="{{ .URL }}" class="nav-link dropdown-toggle">
+                        {{ .Pre }}
+                        <span>{{ .Name }}</span>
+                    </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {{ range .Children }}
+                            <a class="dropdown-item {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+                    {{ end }}
+                      </div>
+                </li>
+            {{ else }}
+                <li class="nav-item  {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
+                    <a href="{{ .URL }}" class="nav-link">
+                        {{ .Pre }}
+                        <span>{{ .Name }}</span>
+                    </a>
+                </li>
+            {{ end }}
+        {{ end }}
+        
+    </ul>
+        
+<ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="btn btn-sm btn-primary " href="/handbook/get-started/introduction/">Get Started</a>
+              </li>
+          </ul>
+        
+      </div>
+      
+    </nav>
+</header>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Documentation</a></li>
+    {{ template "breadcrumb" dict "currentPage" .Page "id" .UniqueID }}
+  </ol>
+</nav>
+  <!-- templates -->
+  {{ define "breadcrumb" }}
+   {{ if .currentPage.Parent }}
+   {{ if ne .currentPage.Parent .IsHome }}
+      {{ template "breadcrumb" dict "currentPage" .currentPage.Parent }}
+    {{ end }}
+      {{ if eq .id .currentPage.UniqueID }}
+      <li class="breadcrumb-item">
+        {{ .currentPage.Title }}
+      </li>
+      {{ else }}
+      <li class="breadcrumb-item">
+        <a href="{{ .currentPage.RelPermalink }}">{{ .currentPage.Title }}</a> 
+</li>
+      {{ end }}
+  {{ end }}
+  {{ end }}
+<div class="px-md-3">
+    {{ block "main" . }}
+    {{ end }}
+</div>
+    {{ block "footer" . }}
+    {{ end }}
+
+    <div class="modal fade" id="newsletterModal" tabindex="-1" role="dialog" aria-labelledby="newsletterModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header border-bottom">
+              <h5 class="modal-title" id="newsletterModalTitle">Newsletter Sign-Up</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+<form action="https://graphzen.us20.list-manage.com/subscribe/post?u=16766f6acba2c1a8d538846be&amp;id=8ecf3f0264" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+            <div class="modal-body">
+                <div class="alert alert-warning" role="alert">
+                    GraphZen is currently in the <strong>early alpha</strong> stage of development. 
+                    If you would like to be notified of updates, when the source code is published, or to be involved in the early development and testing phase, please fill out the form below.
+                </div>
+                <!-- Begin Mailchimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+	/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+
+<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+<div class="mc-field-group">
+	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+</label>
+	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+</div>
+<div class="mc-field-group">
+	<label for="mce-FNAME">First Name </label>
+	<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+</div>
+<div class="mc-field-group">
+	<label for="mce-LNAME">Last Name </label>
+	<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+</div>
+<div class="mc-field-group">
+	<label for="mce-COMPANY">Company </label>
+	<input type="text" value="" name="COMPANY" class="" id="mce-COMPANY">
+</div>
+	<div id="mce-responses" class="clear">
+		<div class="response" id="mce-error-response" style="display:none"></div>
+		<div class="response" id="mce-success-response" style="display:none"></div>
+	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_16766f6acba2c1a8d538846be_8ecf3f0264" tabindex="-1" value=""></div>
+    </div>
+</div>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';fnames[6]='COMPANY';ftypes[6]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+<!--End mc_embed_signup-->
+              <p>
+                <strong></strong>
+
+              </p>
+            </div>
+            <div class="modal-footer">
+    <input type="submit" class="btn btn-primary" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" >
+            </div>
+
+</form>
+          </div>
+        </div>
+      </div>
+
+    <!-- JS Global Compulsory -->
+    <script src="https://graphzen-assets.netlify.com/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://graphzen-assets.netlify.com/vendor/jquery-migrate/dist/jquery-migrate.min.js"></script>
+    <script src="https://graphzen-assets.netlify.com/vendor/popper.js/dist/umd/popper.min.js"></script>
+    <script src="https://graphzen-assets.netlify.com/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-clike.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/components/prism-csharp.min.js"></script>
+    <script src="/js/prism-graphql.min.js"></script>
+
+    <!-- JS Front -->
+    <script src="https://graphzen-assets.netlify.com/js/hs.core.js"></script>
+
+    <!-- <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us20.list-manage.com","uuid":"16766f6acba2c1a8d538846be","lid":"8ecf3f0264","uniqueMethods":true}) })</script> -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136112254-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'UA-136112254-1',
+        {
+          'linker': {
+            'domains': ['docs.graphzen.com', 'api.graphzen.com', 'graphzen.com']
+          }
+        });
+        $( document ).ready(function() {
+           // $('#newsletterModal').modal();
+        });
+    </script>
+  </body>
+</html>

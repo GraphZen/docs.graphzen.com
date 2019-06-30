@@ -1,0 +1,17 @@
+<ul class="list-group list-group-flush">
+        {{ $currentPage := . }}
+            {{ range .Site.Menus.handbook }}
+                {{ if .HasChildren }}
+                <li class="list-group-item">
+                    <span class="group-name">{{ .Name }}</span>
+                    <ul>
+                        {{ range .Children }}
+                        <li class="{{ if $currentPage.IsMenuCurrent "handbook" . }}active{{ end }} ">
+                            <a href="{{ .URL }}" class="text-secondary">{{ .Name }}</a>
+                        </li>
+                        {{ end }}
+                    </ul>
+        </li>
+                {{ end }}
+            {{ end }}
+                    </ul>

@@ -1,0 +1,20 @@
+{{ with .CurrentSection}}
+    {{ $section := .Section }}
+    {{ $sectionPages := where .CurrentSection.Pages "Section" $section}}
+    {{ $num_pages := len $sectionPages}}
+    {{ $page_column_size :=  3 }}
+    {{ range $i, $pages := $sectionPages }}
+      {{ $offset := mod $i $page_column_size |  add 1 }}
+      {{ if eq $offset 1 }} <div class="row mb-5"><!-- begin row -->{{ end }}
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><a href="{{ .RelPermalink }}" title="{{.Title}}" >{{ .Title }} </a> </h5>
+              <p class="card-text"> </p> <!-- <p class="card-text"> {{ .Summary }} </p> -->
+              <a href="{{ .RelPermalink }}" title="{{.Title}}" class="card-link">Read More &raquo;</a>
+            </div>
+            </div>
+        </div>
+      {{ if or (eq $offset $page_column_size) (eq (add $i 1) $num_pages)}}</div><!-- end .row -->{{ end }}
+    {{ end }}
+  {{end}}
