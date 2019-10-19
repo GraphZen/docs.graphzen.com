@@ -1,6 +1,7 @@
 ---
-title: "Simple Blog Step 1"
+title: "01. Create a new .NET web app"
 draft: true
 weight: 100
 ---
+
 

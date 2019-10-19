@@ -58,11 +58,11 @@
                 <li class="nav-item dropdown {{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <a href="{{ .URL }}" class="nav-link dropdown-toggle">
                         {{ .Pre }}
-                        <span>{{ .Name }}</span>
+                        <span>{{ .Name }} </span>
                     </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {{ range .Children }}
-                            <a class="dropdown-item {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+                            <a class="dropdown-item {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}" href="{{ .URL }}">{{ .Name }} </a>
                     {{ end }}
                       </div>
                 </li>

@@ -1,0 +1,8 @@
+{
+  "name": "graphzen-docs",
+  "version": "1.0.0",
+  "repository": "https://github.com/GraphZen/docs.graphzen.com.git",
+  "scripts": {
+    "watch": "hugo server -D -p 1314"
+  }
+}
